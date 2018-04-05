@@ -51,34 +51,34 @@
                 <a href="#GeneralFixture">General Fixture</a>
             </li>
             <li>
-                Ignored Test
+                <a href="#IgnoredTest">Ignored Test</a>
             </li>
             <li>
-                Lazy Test
+                <a href="#LazyTest">Lazy Test</a>
             </li>
             <li>
-                Magic Number Test
+                <a href="#MagicNumberTest">Magic Number Test</a>
             </li>
             <li>
-                Mystery Guest
+                <a href="#MysteryGuest">Mystery Guest</a>
             </li>
             <li>
-                Redundant Print
+                <a href="#RedundantPrint">Redundant Print</a>
             </li>
             <li>
-                Redundant Assertion
+                <a href="#RedundantAssertion">Redundant Assertion</a>
             </li>
             <li>
-                Resource Optimism
+                <a href="#ResourceOptimism">Resource Optimism</a>
             </li>
             <li>
-                Sensitive Equality
+                <a href="#SensitiveEquality">Sensitive Equality</a>
             </li>
             <li>
-                Sleepy Test
+                <a href="#SleepyTest">Sleepy Test</a>
             </li>
             <li>
-                Unknown Test
+                <a href="#UnknownTest">Unknown Test</a>
             </li>
         </ul>
         <div class="w3-container" id="AssertionRoulette">
@@ -217,6 +217,151 @@
             <p>
                 Detection: Not all fields instantiated within the setUp method of a test class are utilized by all test
                 methods in the same test class.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="IgnoredTest">
+            <h5>Ignored Test</h5>
+            <p>
+                JUnit 4 provides developers with the ability to suppress test methods from running. However, these
+                ignored test methods result in overhead since they add unnecessary overhead with regards to compilation
+                time, and increases code complexity and comprehension.
+            </p>
+            <p>
+                Detection: A test method or class that contains the @Ignore annotation.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="LazyTest">
+            <h5>Lazy Test</h5>
+            <p>
+                Occurs when multiple test methods invoke the same method of the production object.
+            </p>
+            <p>
+                Detection: Multiple test methods calling the same production method.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="MagicNumberTest">
+            <h5>Magic Number Test</h5>
+            <p>
+                Occurs when assert statements in a test method contain numeric literals (i.e., magic numbers) as
+                parameters. Magic numbers do not indicate the meaning/purpose of the number. Hence, they should be
+                replaced with constants or variables, thereby providing a descriptive name for the input.
+            </p>
+            <p>
+                Detection: An assertion method that contains a numeric literal as an argument.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="MysteryGuest">
+            <h5>Mystery Guest</h5>
+            <p>
+                Occurs when a test method utilizes external resources (e.g. files, database, etc.). Use of external
+                resources in test methods will result in stability and performance issues. Developers should use mock
+                objects in place of external resources.
+            </p>
+            <p>
+                Detection: A test method containing object instances of files and databases classes.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="RedundantPrint">
+            <h5>Redundant Print</h5>
+            <p>
+                Print statements in unit tests are redundant as unit tests are executed as part of an automated process
+                with little to no human intervention. Print statements are possibly used by developers for traceability
+                and debugging purposes and then forgotten.
+            </p>
+            <p>
+                Detection: A test method that invokes either the print or println or printf or write method of the
+                System class.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="RedundantAssertion">
+            <h5>Redundant Assertion</h5>
+            <p>
+                This smell occurs when test methods contain assertion statements that are either always true or always
+                false. This smell is introduced by developers for debugging purposes and then forgotten.
+            </p>
+            <p>
+                Detection: A test method that contains an assertion statement in which the expected and actual
+                parameters are the same.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="ResourceOptimism">
+            <h5>Resource Optimism</h5>
+            <p>
+                This smell occurs when a test method makes an optimistic assumption that the external resource (e.g.,
+                File), utilized by the test method, exists.
+            </p>
+            <p>
+                Detection: A test method utilizes an instance of a File class without calling the exists(), isFile() or
+                notExists() methods of the object.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="SensitiveEquality">
+            <h5>Sensitive Equality</h5>
+            <p>
+                Occurs when the toString method is used within a test method. Test methods verify objects by invoking
+                the default toString() method of the object and comparing the output against an specific string. Changes
+                to the implementation of toString() might result in failure. The correct approach is to implement a
+                custom method within the object to perform this comparison.
+            </p>
+            <p>
+                Detection: A test method invokes the toString() method of an object.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="SleepyTest">
+            <h5>Sleepy Test</h5>
+            <p>
+                Explicitly causing a thread to sleep can lead to unexpected results as the processing time for a task
+                can differ on different devices. Developers introduce this smell when they need to pause execution of
+                statements in a test method for a certain duration (i.e. simulate an external event) and then continuing
+                with execution.
+            </p>
+            <p>
+                Detection: A test method that invokes the Thread.sleep() method.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="UnknownTest">
+            <h5>Unknown Test</h5>
+            <p>
+                An assertion statement is used to declare an expected boolean condition for a test method. By examining
+                the assertion statement it is possible to understand the purpose of the test method. However, It is
+                possible for a test method to written sans an assertion statement, in such an instance JUnit will show
+                the test method as passing if the statements within the test method did not result in an exception, when
+                executed. New developers to the project will find it difficult in understanding the purpose of such test
+                methods (more so if the name of the test method is not descriptive enough).
+            </p>
+            <p>
+                Detection: A test method that does not contain a single assertion statement and @Test(expected)
+                annotation parameter.
             </p>
             <p class="w3-large w3-right-align">
                 <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>

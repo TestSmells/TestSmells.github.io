@@ -16,9 +16,223 @@
     </div>
 </header>
 
+
+<div class="w3-center w3-padding-32">
+    <div class="w3-card w3-container w3-justify w3-padded-box">
+        <p>
+            Provided below are the test smell detected by the tool along with the detection strategy.
+        </p>
+        <ul id="SmellList">
+            <li>
+                <a href="#AssertionRoulette">Assertion Roulette</a>
+            </li>
+            <li>
+                <a href="#ConditionalTestLogic">Conditional Test Logic</a>
+            </li>
+            <li>
+                <a href="#ConstructorInitialization">Constructor Initialization</a>
+            </li>
+            <li>
+                <a href="#DefaultTest">Default Test</a>
+            </li>
+            <li>
+                <a href="#DuplicateAssert">Duplicate Assert</a>
+            </li>
+            <li>
+                <a href="#EagerTest">Eager Test</a>
+            </li>
+            <li>
+                <a href="#EmptyTest">Empty Test</a>
+            </li>
+            <li>
+                <a href="#ExceptionHandling">Exception Handling</a>
+            </li>
+            <li>
+                <a href="#GeneralFixture">General Fixture</a>
+            </li>
+            <li>
+                Ignored Test
+            </li>
+            <li>
+                Lazy Test
+            </li>
+            <li>
+                Magic Number Test
+            </li>
+            <li>
+                Mystery Guest
+            </li>
+            <li>
+                Redundant Print
+            </li>
+            <li>
+                Redundant Assertion
+            </li>
+            <li>
+                Resource Optimism
+            </li>
+            <li>
+                Sensitive Equality
+            </li>
+            <li>
+                Sleepy Test
+            </li>
+            <li>
+                Unknown Test
+            </li>
+        </ul>
+        <div class="w3-container" id="AssertionRoulette">
+            <h5>Assertion Roulette</h5>
+            <p>
+                Occurs when a test method has multiple non-documented assertions. Multiple assertion statements in a
+                test
+                method without a descriptive message impacts readability/understandability/maintainability as it’s not
+                possible to understand the reason for the failure of the test.
+            </p>
+            <p>
+                Detection: A test method contains more than one assertion statement without without an
+                explanation/message (parameter in the assertion method).
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="ConditionalTestLogic">
+            <h5>Conditional Test Logic</h5>
+            <p>
+                Test methods need to be simple and execute all statements in the production method. Conditions within
+                the test method will alter the behavior of the test and its expected output, and would lead to
+                situations where the test fails to detect defects in the production method since test statements were
+                not executed as a condition was not met. Furthermore, conditional code within a test method negatively
+                impacts the ease of comprehension by developers.
+            </p>
+            <p>
+                Detection: A test method that contains one or more control statements (i.e if, switch, conditional
+                expression, for, foreach and while statement).
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="ConstructorInitialization">
+            <h5>Constructor Initialization</h5>
+            <p>
+                Ideally, the test suite should not have a constructor. Initialization of fields should be in the
+                setUp() method. Developers who are unaware of the purpose of setUp() method would give
+                rise to this smell by defining a constructor for the test suite.
+            </p>
+            <p>
+                Detection: A test class that contains a constructor declaration.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="DefaultTest">
+            <h5>Default Test</h5>
+            <p>
+                By default Android Studio creates default test classes when a project is created. These classes are
+                meant to serve as an example for developers when wring unit tests and should either be removed or
+                renamed. Having such files in the project will cause developers to start adding test methods into these
+                files, making the default test class a container of all test cases. This also would possibly cause
+                problems when the classes need to be renamed in the future.
+            </p>
+            <p>
+                Detection: A test class is named either `ExampleUnitTest' or `ExampleInstrumentedTest'.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="DuplicateAssert">
+            <h5>Duplicate Assert</h5>
+            <p>
+                This smell occurs when a test method tests for the same condition multiple times within the same test
+                method. If the test method needs to test the same condition using different values, a new test method
+                should be utilized; the name of the test method should be an indication of the test being performed.
+                Possible situations that would give rise to this smell include: (1) developers grouping multiple
+                conditions to test a single method; (2) developers performing debugging activities; and (3) an
+                accidental copy-paste of code.
+            </p>
+            <p>
+                Detection: A test method that contains more than one assertion statement with the same parameters.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="EagerTest">
+            <h5>Eager Test</h5>
+            <p>
+                Occurs when a test method invokes several methods of the production object. This smell results in
+                difficulties in test comprehension and maintenance.
+            </p>
+            <p>
+                Detection: A test method contains multiple calls to multiple production methods.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="EmptyTest">
+            <h5>Empty Test</h5>
+            <p>
+                Occurs when a test method does not contain executable statements. Such methods are possibly created for
+                debugging purposes and then forgotten about or contains commented out code. An empty test can be
+                considered problematic and more dangerous than not having a test case at all since JUnit will indicate
+                that the test passes even if there are no executable statements present in the method body. As such,
+                developers introducing behavior-breaking changes into production class, will not be notified of the
+                alternated outcomes as JUnit will report the test as passing.
+            </p>
+            <p>
+                Detection: A test method that does not contain a single executable statement.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="ExceptionHandling">
+            <h5>Exception Handling</h5>
+            <p>
+                This smell occurs when a test method explicitly a passing or failing of a test method is dependent on
+                the production method throwing an exception. Developers should utilize JUnit's exception handling to
+                automatically pass/fail the test instead of writing custom exception handling code or throwing an
+                exception.
+            </p>
+            <p>
+                Detection: A test method that contains either a throw statement or a catch clause.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+        <div class="w3-container" id="GeneralFixture">
+            <h5>General Fixture</h5>
+            <p>
+                Occurs when a test case fixture is too general and the test methods only access part of it. A test
+                setup/fixture method that initializes fields that are not accessed by test methods indicates that the
+                fixture is too generalized. A drawback of it being too general is that unnecessary work is being done
+                when a test method is run.
+            </p>
+            <p>
+                Detection: Not all fields instantiated within the setUp method of a test class are utilized by all test
+                methods in the same test class.
+            </p>
+            <p class="w3-large w3-right-align">
+                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+            </p>
+        </div>
+    </div>
+
+
+</div>
+
+
 <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
     <p class="w3-small">
-        Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/" style="text-decoration: none;" target="_blank">RIT</a>
+        Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                                                                                   style="text-decoration: none;"
+                                                                                   target="_blank">RIT</a>
     </p>
 </footer>
 </body>

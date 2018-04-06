@@ -255,15 +255,45 @@ public class ExampleUnitTest {
         <div class="w3-container" id="DuplicateAssert">
             <h5>Duplicate Assert</h5>
             <pre><code class="java">
+@Test
+public void testXmlSanitizer() {
+    boolean valid = XmlSanitizer.isValid("Fritzbox");
+    assertEquals("Fritzbox is valid", true, valid);
+    System.out.println("Pure ASCII test - passed");
 
+    valid = XmlSanitizer.isValid("Fritz Box");
+    assertEquals("Spaces are valid", true, valid);
+    System.out.println("Spaces test - passed");
+
+    valid = XmlSanitizer.isValid("Frützbüx");
+    assertEquals("Frützbüx is invalid", false, valid);
+    System.out.println("No ASCII test - passed");
+
+    valid = XmlSanitizer.isValid("Fritz!box");
+    assertEquals("Exclamation mark is valid", true, valid);
+    System.out.println("Exclamation mark test - passed");
+
+    valid = XmlSanitizer.isValid("Fritz.box");
+    assertEquals("Exclamation mark is valid", true, valid);
+    System.out.println("Dot test - passed");
+
+    valid = XmlSanitizer.isValid("Fritz-box");
+    assertEquals("Minus is valid", true, valid);
+    System.out.println("Minus test - passed");
+
+    valid = XmlSanitizer.isValid("Fritz-box");
+    assertEquals("Minus is valid", true, valid);
+    System.out.println("Minus test - passed");
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: In this test method, testXmlSanitizer(), the developer tests 'Exclamation mark is valid',
+                'Frützbüx is invalid' and 'Minus is valid' multiple times in the same test method.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File(s):<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/openbmap/radiocells-scanner-android/blob/d6353829f786180ec5ba548ed2adf747e816f735/android/app/src/test/java/org/openbmap/utils/XmlSanitizerTest.java"
+                        target="_blank">XmlSanitizerTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

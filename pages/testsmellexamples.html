@@ -495,15 +495,32 @@ public void testEncrypt() throws Exception {
         <div class="w3-container" id="MysteryGuest">
             <h5>Mystery Guest</h5>
             <pre><code class="java">
+public void testPersistence() throws Exception {
+    File tempFile = File.createTempFile("systemstate-", ".txt");
+    try {
+        SystemState a = new SystemState(then, 27, false, bootTimestamp);
+        a.addInstalledApp("a.b.c", "ABC", "1.2.3");
 
+        a.writeToFile(tempFile);
+        SystemState b = SystemState.readFromFile(tempFile);
+
+        assertEquals(a, b);
+    } finally {
+        //noinspection ConstantConditions
+        if (tempFile != null) {
+            //noinspection ResultOfMethodCallIgnored
+            tempFile.delete();
+        }
+    }
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: As part of the test, the test method, testPersistence(), creates a File (tempFile) in a specific directory and then utilizes this file in the test process.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/walles/batterylogger/blob/11d81ee721fc12ad324f4a04e265b0ff8c553736/src/androidTest/java/com/gmail/walles/johan/batterylogger/SystemStateTest.java"
+                        target="_blank">SystemStateTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

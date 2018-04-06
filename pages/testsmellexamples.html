@@ -143,15 +143,41 @@ public void testCloneNonBareRepoFromLocalTestServer() throws Exception {
         <div class="w3-container" id="ConditionalTestLogic">
             <h5>Conditional Test Logic</h5>
             <pre><code class="java">
+@Test
+public void testSpinner() {
 
+    for (Map.Entry<String, String> entry : sourcesMap.entrySet()) {
+
+        String id = entry.getKey();
+        Object resultObject = resultsMap.get(id);
+        if (resultObject instanceof EventsModel) {
+            EventsModel result = (EventsModel) resultObject;
+            if (result.testSpinner.runTest) {
+                System.out.println("Testing " + id + " (testSpinner)");
+                //System.out.println(result);
+                AnswerObject answer = new AnswerObject(entry.getValue(), "", new CookieManager(), "");
+                EventsScraper scraper = new EventsScraper(RuntimeEnvironment.application, answer);
+                SpinnerAdapter spinnerAdapter = scraper.spinnerAdapter();
+                assertEquals(spinnerAdapter.getCount(), result.testSpinner.data.size());
+                for (int i = 0; i < spinnerAdapter.getCount(); i++) {
+                    assertEquals(spinnerAdapter.getItem(i), result.testSpinner.data.get(i));
+                }
+            }
+         }
+    }
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The test method, testSpinner(), contains multiple control statements (i.e. control flow
+                statements). The success or failure of the test is based on the result of the assertion method which is
+                within the control flow blocks and hence not predictable. This also increases the complexity of
+                the test method and hence has a negative impact on
+                maintenance of the test.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File(s):<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/Tyde/TuCanMobile/blob/dbee8a0a738400427bb94e5bc38a9970687ac147/app/src/test/java/com/dalthed/tucan/EventsScraperTest.java"
+                        target="_blank">EventsScraperTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

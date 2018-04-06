@@ -184,15 +184,37 @@ public void testSpinner() {
         <div class="w3-container" id="ConstructorInitialization">
             <h5>Constructor Initialization</h5>
             <pre><code class="java">
+public class TagEncodingTest extends BrambleTestCase {
 
+	private final CryptoComponent crypto;
+	private final SecretKey tagKey;
+	private final long streamNumber = 1234567890;
+
+	public TagEncodingTest() {
+		crypto = new CryptoComponentImpl(new TestSecureRandomProvider());
+		tagKey = TestUtils.getSecretKey();
+	}
+
+	@Test
+	public void testKeyAffectsTag() throws Exception {
+		Set<Bytes> set = new HashSet<>();
+		for (int i = 0; i < 100; i++) {
+			byte[] tag = new byte[TAG_LENGTH];
+			SecretKey tagKey = TestUtils.getSecretKey();
+			crypto.encodeTag(tag, tagKey, PROTOCOL_VERSION, streamNumber);
+			assertTrue(set.add(new Bytes(tag)));
+		}
+	}
+ ...
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The test class utilizes a constructor instead of a setUp method to initialize fields.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File(s):<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://code.briarproject.org/akwizgran/briar/blob/0327d4f38a16b09be7cb2578d7c6f694093e65df/bramble-core/src/test/java/org/briarproject/bramble/crypto/TagEncodingTest.java"
+                        target="_blank">TagEncodingTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

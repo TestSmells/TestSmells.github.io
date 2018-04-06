@@ -587,15 +587,24 @@ public void testTrue() {
         <div class="w3-container" id="ResourceOptimism">
             <h5>Resource Optimism</h5>
             <pre><code class="java">
-
+@Test
+public void saveImage_noImageFile_ko() throws IOException {
+File outputFile = File.createTempFile("prefix", "png", new File("/tmp"));
+ProductImage image = new ProductImage("01010101010101", ProductImageField.FRONT, outputFile);
+Response<JsonNode> response = serviceWrite.saveImage(image.getCode(), image.getField(), image.getImguploadFront(), image.getImguploadIngredients(), image.getImguploadNutrition()).execute();
+assertTrue(response.isSuccess());
+assertThatJson(response.body())
+    .node("status")
+        .isEqualTo("status not ok");
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The test method accesses a file without verifying if the file exists before using it in the test operations.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/Freeyourgadget/Gadgetbridge/blob/d9283d0f2265fbe36759d01f9ae52cd9d3605585/app/src/test/java/nodomain/freeyourgadget/gadgetbridge/test/LoggingTest.java"
+                        target="_blank">LoggingTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

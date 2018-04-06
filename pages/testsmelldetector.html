@@ -65,6 +65,44 @@
             <iframe src="https://ghbtns.com/github-btn.html?user=TestSmells&repo=TestSmellDetector&type=fork&count=true&size=large"
                     frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
         </div>
+        <div class="w3-container">
+            <h4 class="w3-center w3-margin-top" style="text-decoration: underline">Tool Usage</h4>
+            <h5 style="text-decoration: underline">Input</h5>
+            <p>
+                Prior to executing the tool, an CSV file needs to be created. The CSV file specifies the list of test
+                files (and their associated production file). This file will be used as input to the tool. The format of
+                the file should be:
+            <pre>
+                    appName,pathToTestFile,pathToProductionFile
+                </pre>
+            Example:
+            <pre>
+                    myCoolApp,F:\Apps\myCoolApp\code\test\GraphTest.java,F:\Apps\myCoolApp\code\src\Graph.java
+                    myCoolApp,F:\Apps\myCoolApp\code\test\EmployeeTest.java,F:\Apps\myCoolApp\code\src\Employee.java
+                    myCoolApp,F:\Apps\myCoolApp\code\test\EmployeeRelationship.java
+                </pre>
+            <span class="w3-medium w3-serif" style="font-style:italic">Note: In the event a production file is not associated with a test file, then detection for test smells that require production files are not run.</span>
+            </p>
+            <h5 style="text-decoration: underline">Execution</h5>
+            <p>
+                Once the CSV file has been created, the path to the CSV file need to be passed as an argument when
+                executing the jar.
+            <pre>
+                    java -jar .\TestSmellDetector.jar pathToInputFile.csv
+                </pre>
+            Example:
+            <pre>
+                    java -jar .\TestSmellDetector.jar "F:\Projects\TestSmellDetector\inputFile.csv"
+                </pre>
+            </p>
+            <h5 style="text-decoration: underline">Output</h5>
+            <p>
+                The tool outputs a CSV file containing the results of the execution. The output CSV file will be created
+                in the same location as the jar. The CSV file contains the path of the test files (and their associated
+                production file) along with the detection status for each smell. A detection of status of 'true'
+                indicates that the associated smell exists in the test file.
+            </p>
+        </div>
     </div>
 </div>
 

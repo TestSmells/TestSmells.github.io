@@ -481,15 +481,20 @@ public void testEncrypt() throws Exception {
         <div class="w3-container" id="MagicNumberTest">
             <h5>Magic Number Test</h5>
             <pre><code class="java">
-
+@Test
+public void testGetLocalTimeAsCalendar() {
+    Calendar localTime = calc.getLocalTimeAsCalendar(BigDecimal.valueOf(15.5D), Calendar.getInstance());
+    assertEquals(15, localTime.get(Calendar.HOUR_OF_DAY));
+    assertEquals(30, localTime.get(Calendar.MINUTE));
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: In this test method, it is not known the significance of the two numeric literals that are passed as parameters in the assertion method.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/Cbsoftware/PressureNet/blob/f575e9b513f4f2eef803869ca96f9056d8c6120e/lib/sunrisesunsetlib/src/test/java/com/luckycatlabs/sunrisesunset/calculator/SolarEventCalculatorTest.java"
+                        target="_blank">SolarEventCalculatorTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

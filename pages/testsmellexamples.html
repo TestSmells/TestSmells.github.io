@@ -430,15 +430,24 @@ public void testIsCA() {
         <div class="w3-container" id="IgnoredTest">
             <h5>Ignored Test</h5>
             <pre><code class="java">
-
+@Ignore("disabled for now as this test is too flaky")
+public void peerPriority() throws Exception {
+	final List<InetSocketAddress> addresses = Lists.newArrayList(
+    	new InetSocketAddress("localhost", 2000),
+        new InetSocketAddress("localhost", 2001),
+        new InetSocketAddress("localhost", 2002)
+	);
+    peerGroup.addConnectedEventListener(connectedListener);
+    .....
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: This test will not be executed due to the @Ignore annotation.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="#"
+                        target="_blank"></a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

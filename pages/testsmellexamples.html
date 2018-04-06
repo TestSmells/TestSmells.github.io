@@ -655,15 +655,21 @@ public void testEdictExternSearch() throws Exception {
         <div class="w3-container" id="UnknownTest">
             <h5>Unknown Test</h5>
             <pre><code class="java">
-
+@Test
+public void hitGetPOICategoriesApi() throws Exception {
+    POICategories poiCategories = apiClient.getPOICategories(16);
+    for (POICategory category : poiCategories) {
+      System.out.println(category.name() + ": " + category);
+    }
+}
             </code></pre>
             <p>
-                Rationale:
+                Rationale: Due to a missing assertion method, it is not possible to know what this method is testing.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank"></a></span>
+                        href="https://github.com/cyclestreets/android/blob/d7a241721e7c2298e40318158943c193ad8e107a/libraries/cyclestreets-core/src/test/java/net/cyclestreets/api/client/RetrofitApiClientIntegrationTest.java"
+                        target="_blank">RetrofitApiClientIntegrationTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

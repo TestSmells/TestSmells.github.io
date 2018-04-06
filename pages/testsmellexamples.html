@@ -396,15 +396,34 @@ public void realCase() {
         <div class="w3-container" id="GeneralFixture">
             <h5>General Fixture</h5>
             <pre><code class="java">
+protected void setUp() throws Exception {
+    assetManager = getInstrumentation().getContext().getAssets();
+    certificateFactory = CertificateFactory.getInstance("X.509");
 
+    infoDebianTestCA = loadCertificateInfo("DebianTestCA.pem");
+    infoDebianTestNoCA = loadCertificateInfo("DebianTestNoCA.pem");
+    infoGTECyberTrust = loadCertificateInfo("GTECyberTrustGlobalRoot.pem");
+
+    // user-submitted test cases
+	infoMehlMX = loadCertificateInfo("mehl.mx.pem");
+}
+
+public void testIsCA() {
+    assertTrue(infoDebianTestCA.isCA());
+    assertFalse(infoDebianTestNoCA.isCA());
+    assertNull(infoGTECyberTrust.isCA());
+
+    assertFalse(infoMehlMX.isCA());
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The setup/fixture method initializes a total of 6 fields (variables). However, the test
+                method, testIsCA(), only utilizes 4 fields.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/bitfireAT/cadroid/blob/84cecaf2691dffe6eb1f5c300d9fe52b21d7b536/app/src/androidTest/java/at/bitfire/cadroid/test/CertificateInfoTest.java"
+                        target="_blank">CertificateInfoTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

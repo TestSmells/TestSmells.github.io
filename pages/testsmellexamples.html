@@ -468,7 +468,8 @@ public void testEncrypt() throws Exception {
 }
             </code></pre>
             <p>
-                Rationale: Both test methods, testDecrypt() and testEncrypt(), call the same SUT method, Cryptographer.decrypt().
+                Rationale: Both test methods, testDecrypt() and testEncrypt(), call the same SUT method,
+                Cryptographer.decrypt().
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
@@ -515,7 +516,8 @@ public void testPersistence() throws Exception {
 }
             </code></pre>
             <p>
-                Rationale: As part of the test, the test method, testPersistence(), creates a File (tempFile) in a specific directory and then utilizes this file in the test process.
+                Rationale: As part of the test, the test method, testPersistence(), creates a File (tempFile) in a
+                specific directory and then utilizes this file in the test process.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
@@ -527,30 +529,44 @@ public void testPersistence() throws Exception {
         <div class="w3-container" id="RedundantPrint">
             <h5>Redundant Print</h5>
             <pre><code class="java">
-
+@Test
+public void testTransform10mNEUAndBack() {
+    Leg northEastAndUp10M = new Leg(10, 45, 45);
+    Coord3D result = transformer.transform(Coord3D.ORIGIN, northEastAndUp10M);
+    System.out.println("result = " + result);
+    Leg reverse = new Leg(10, 225, -45);
+    result = transformer.transform(result, reverse);
+    assertEquals(Coord3D.ORIGIN, result);
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The test method, testTransform10mNEUAndBack(), contains a statement that prints the value of
+                a variable to the console. This is a redundant statement that might have been added by a developer, for
+                debugging purposes, at the time of writing the test method.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/richsmith/sexytopo/blob/80cd8bbda23fba569ed470d80ed99e6bcbec5159/app/src/test/java/org/hwyl/sexytopo/control/util/Space3DTransformerTest.java"
+                        target="_blank">Space3DTransformerTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>
         <div class="w3-container" id="RedundantAssertion">
             <h5>Redundant Assertion</h5>
             <pre><code class="java">
-
+@Test
+public void testTrue() {
+    assertEquals(true, true);
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The test method, testTrue(), will always pass as since the assert statement compares a
+                Boolean value of true against another Boolean value of true.
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File:<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/nus-mtp/worldscope/blob/41770e12e0780b57ad80a48c2a4cd07f57aadfa6/client/android/WorldScope/app/src/androidTest/java/com/litmus/worldscope/LoginActivityTest.java"
+                        target="_blank">LoginActivityTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

@@ -221,15 +221,34 @@ public class TagEncodingTest extends BrambleTestCase {
         <div class="w3-container" id="DefaultTest">
             <h5>Default Test</h5>
             <pre><code class="java">
+public class ExampleUnitTest {
+    @Test
+	public void addition_isCorrect() throws Exception {
+		assertEquals(4, 2 + 2);
+	}
 
+    @Test
+    public void shareProblem() throws InterruptedException {
+    	.....
+		Observable.just(200)
+ 		.subscribeOn(Schedulers.newThread())
+		.subscribe(begin.asAction());
+		begin.set(200);
+		Thread.sleep(1000);
+		assertEquals(beginTime.get(), "200");
+    	.....
+	}
+	.....
+}
             </code></pre>
             <p>
-                Rationale: xx
+                Rationale: The default test class provided by Android Studio is utilized to hold actual test methods.
+                The developer should rename this test class (and remove the example test method).
             </p>
             <p>
                 <span class=" w3-small w3-left-align">Original File(s):<a
-                        href=""
-                        target="_blank">xx</a></span>
+                        href="https://github.com/httpdispatch/MissedNotificationsReminder/blob/350c3a8fbab935a733d371860e86a937c1d17b2c/app/src/test/java/com/app/missednotificationsreminder/ExampleUnitTest.java"
+                        target="_blank">ExampleUnitTest.java</a></span>
                 <span class=" w3-large w3-right"><a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a></span>
             </p>
         </div>

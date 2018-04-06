@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html>
-<title>Software Unit Test Smells</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../assets/w3.css">
-<link rel="stylesheet" href="../assets/w3-theme-teal.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<head>
+    <title>Software Unit Test Smells</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/w3.css">
+    <link rel="stylesheet" href="../assets/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117089382-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117089382-1');
+    </script>
+
+</head>
 <body>
 
 <ul class="topnav w3-small">
     <li><a href="../index.html">Home</a></li>
     <li><a href="testsmells.html">Test Smell Types</a></li>
-    <li><a  class="active" href="testsmellexamples.html">Test Smell Examples</a></li>
+    <li><a class="active" href="testsmellexamples.html">Test Smell Examples</a></li>
     <li><a href="testsmelldetector.html">Test Smell Detector</a></li>
     <li class="right"><a href="about.html">About</a></li>
 </ul>
@@ -27,8 +44,67 @@
 <div class="w3-center w3-padding-32">
     <div class="w3-card w3-container w3-justify w3-padded-box">
         <p>
-            xxxxxxx
+            Provided below are examples of test smells that were detected in open-source projects.
         </p>
+        <ul id="SmellList">
+            <li>
+                <a href="#AssertionRoulette">Assertion Roulette</a>
+            </li>
+            <li>
+                <a href="#ConditionalTestLogic">Conditional Test Logic</a>
+            </li>
+            <li>
+                <a href="#ConstructorInitialization">Constructor Initialization</a>
+            </li>
+            <li>
+                <a href="#DefaultTest">Default Test</a>
+            </li>
+            <li>
+                <a href="#DuplicateAssert">Duplicate Assert</a>
+            </li>
+            <li>
+                <a href="#EagerTest">Eager Test</a>
+            </li>
+            <li>
+                <a href="#EmptyTest">Empty Test</a>
+            </li>
+            <li>
+                <a href="#ExceptionHandling">Exception Handling</a>
+            </li>
+            <li>
+                <a href="#GeneralFixture">General Fixture</a>
+            </li>
+            <li>
+                <a href="#IgnoredTest">Ignored Test</a>
+            </li>
+            <li>
+                <a href="#LazyTest">Lazy Test</a>
+            </li>
+            <li>
+                <a href="#MagicNumberTest">Magic Number Test</a>
+            </li>
+            <li>
+                <a href="#MysteryGuest">Mystery Guest</a>
+            </li>
+            <li>
+                <a href="#RedundantPrint">Redundant Print</a>
+            </li>
+            <li>
+                <a href="#RedundantAssertion">Redundant Assertion</a>
+            </li>
+            <li>
+                <a href="#ResourceOptimism">Resource Optimism</a>
+            </li>
+            <li>
+                <a href="#SensitiveEquality">Sensitive Equality</a>
+            </li>
+            <li>
+                <a href="#SleepyTest">Sleepy Test</a>
+            </li>
+            <li>
+                <a href="#UnknownTest">Unknown Test</a>
+            </li>
+        </ul>
     </div>
 </div>
 

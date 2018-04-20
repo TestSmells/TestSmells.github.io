@@ -23,7 +23,7 @@
     </script>
 
 </head>
-<body>
+<body id="pageBody">
 
 <ul class="topnav w3-small">
     <li><a href="../index.html">Home</a></li>
@@ -47,7 +47,7 @@
         <p>
             Provided below are the test smells detected by our tool along with the detection strategy.
         </p>
-        <ul id="SmellList">
+        <ul>
             <li>
                 <a href="#AssertionRoulette">Assertion Roulette</a>
             </li>
@@ -119,7 +119,7 @@
                 explanation/message (parameter in the assertion method).
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="ConditionalTestLogic">
@@ -136,7 +136,7 @@
                 expression, for, foreach and while statement).
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="ConstructorInitialization">
@@ -150,7 +150,7 @@
                 Detection: A test class that contains a constructor declaration.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="DefaultTest">
@@ -166,7 +166,7 @@
                 Detection: A test class is named either `ExampleUnitTest' or `ExampleInstrumentedTest'.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="DuplicateAssert">
@@ -183,7 +183,7 @@
                 Detection: A test method that contains more than one assertion statement with the same parameters.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="EagerTest">
@@ -196,7 +196,7 @@
                 Detection: A test method contains multiple calls to multiple production methods.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="EmptyTest">
@@ -213,7 +213,7 @@
                 Detection: A test method that does not contain a single executable statement.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="ExceptionHandling">
@@ -228,7 +228,7 @@
                 Detection: A test method that contains either a throw statement or a catch clause.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="GeneralFixture">
@@ -244,7 +244,7 @@
                 methods in the same test class.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="IgnoredTest">
@@ -258,7 +258,7 @@
                 Detection: A test method or class that contains the @Ignore annotation.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="LazyTest">
@@ -270,7 +270,7 @@
                 Detection: Multiple test methods calling the same production method.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="MagicNumberTest">
@@ -284,7 +284,7 @@
                 Detection: An assertion method that contains a numeric literal as an argument.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="MysteryGuest">
@@ -298,7 +298,7 @@
                 Detection: A test method containing object instances of files and databases classes.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="RedundantPrint">
@@ -313,7 +313,7 @@
                 System class.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="RedundantAssertion">
@@ -327,7 +327,7 @@
                 parameters are the same.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="ResourceOptimism">
@@ -341,7 +341,7 @@
                 notExists() methods of the object.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="SensitiveEquality">
@@ -356,7 +356,7 @@
                 Detection: A test method invokes the toString() method of an object.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="SleepyTest">
@@ -371,7 +371,7 @@
                 Detection: A test method that invokes the Thread.sleep() method.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
         <div class="w3-container" id="UnknownTest">
@@ -389,7 +389,7 @@
                 annotation parameter.
             </p>
             <p class="w3-large w3-right-align">
-                <a href="#SmellList"><i class="fa fa-arrow-circle-up"></i></a>
+                <a href="#pageBody"><i class="fa fa-arrow-circle-up"></i></a>
             </p>
         </div>
     </div>

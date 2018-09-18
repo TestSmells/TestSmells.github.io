@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Unit Test Smells</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/w3.css">
+    <link rel="stylesheet" href="../../assets/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/java.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117089382-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117089382-1');
+    </script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+</head>
+
+<body id="pageBody">
+
+    <ul class="topnav w3-small">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../testsmells.html">Test Smell Types</a></li>
+        <li><a href="../testsmellexamples.html">Test Smell Examples</a></li>
+        <li><a href="../testsmelldetector.html">Test Smell Detector</a></li>
+        <li><a class="active" href="#">Test Smell Research</a></li>
+        <li class="right"><a href="../about.html">About</a></li>
+    </ul>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
+            <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Research</h1>
+            <h2 class="w3-xxlarge w3-animate-bottom"><i>Tool Comparison</i></h2>
+        </div>
+    </header>
+
+    <div class="w3-center w3-padding-32">
+        <div class="w3-card w3-container w3-justify w3-padded-box">
+            <p>
+                As part of our study, we also performed a comparative exercise of tsDetects ability of smell detection
+                against state-of-art detection strategies. We were successful in acquiring Test Smell Detector (TSD), a
+                tool used in a few recent test smell studies \cite{bavota2015test,palomba2017does}. Ideally, the
+                comparison has to be performed with a dataset of manually detected test smells. Since there are no
+                publicly available test smell datasets, we decided to run both tools against a set of manually
+                validated smells, identified in the previous experiment. However, the comparison was limited to smell
+                types recognized by tsDetect and TSD. Our findings indicated that tsDetect is better equipped to detect
+                smells in specific scenarios than TSD. Listed below are some scenarios that we encountered where
+                tsDetect performed better than TSD.
+            </p>
+            <div class="w3-container" id="AssertionRoulette">
+                <h5>Assertion Roulette</h5>
+                <p>
+                    In Example #1, TSD falsely indicates that the method exhibits the
+                    smell. The detection is not valid as this method only contains one assertion statement.
+                    In Example #2, TSD falsely indicates that the test method does not exhibit the smell. The
+                    detection is not valid since there are multiple non-documented assertion statements.
+                </p>
+                <pre><code class="java">
+//Example #1
+@Test
+public void testEncrypt() throws Exception {
+    String xml = readFileAsString(DECRYPTED_DATA_FILE_4_14);
+    byte[] encrypted = Cryptographer.encrypt(xml, "test");
+    String decrypt = Cryptographer.decrypt(encrypted, "test");
+    assertEquals(xml, decrypt);
+}
+                    
+//Example #2:
+@Test
+public void testTimestamp() {
+    Assert.assertEquals("201205292002",ExporterFileNameUtils.getTimeStamp(new Date(1338314522376L), Locale.GERMANY));   
+    Assert.assertEquals("201205292010", ExporterFileNameUtils.getTimeStamp(new Date(1338315008925L), Locale.GERMANY));
+}
+                </code></pre>
+            </div>
+
+            <div class="w3-container" id="EagerTest">
+                <h5>Eager Test</h5>
+                <p>
+                    Example #1, contains multiple calls to the production class, but is not
+                    indicated as a smell by TSD. However, it should be noted that the methods are defined in the parent
+                    class of the production class. Example #2 is reported as having an Eager Test smell, by TSD since
+                    the same production class method `isArea()' is called twice in the same method. However, it can be
+                    argued, that this not constitute to an Eager Test smell since it is the same method and the Eager
+                    Test rule definition does not indicate if the called methods have to be different.
+                </p>
+                <pre><code class="java">
+//Example #1
+public void testOnUpgrade() {
+    DbHelper helper = createHelperVersion(1);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V1);
+    helper.close();                    
+    helper = createHelperVersion(2);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V2);
+    helper.close();                    
+    helper = createHelperVersion(3);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V3);
+    helper.close();                    
+    helper = createHelperVersion(4);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V4);
+    helper.close();
+}
+                      
+//Example #2:
+public void testRelation(){
+    assertFalse(OsmAreas.isArea(new OsmRelation(0,0, null, null)));
+    Map<String, String> tags = new HashMap<>();
+    tags.put("type","multipolygon");
+    assertTrue(OsmAreas.isArea(new OsmRelation(0, 0, null, tags)));
+}
+                </code></pre>
+            </div>
+
+            <div class="w3-container" id="LazyTest">
+                <h5>Lazy Test</h5>
+                <p>
+                    The example is not reported as having a Lazy Test smell, by TSD. However,
+                    it should be noted that the methods are defined in the parent class of the production class. The
+                    existence of the smell in this scenario can be debated.
+                </p>
+                <pre><code class="java">
+public void testOnCreate_v2() {
+    DbHelper helper = createHelperVersion(2);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V2);
+    helper.close();
+}
+                    
+public void testOnCreate_v3() {
+    DbHelper helper = createHelperVersion(3);
+    assertTablesExist(helper.getReadableDatabase(), TABLES_V3);
+    helper.close();
+}
+                </code></pre>
+            </div>
+
+            <div class="w3-container" id="MysteryGuest">
+                <h5>Mystery Guest</h5>
+                <p>
+                    TSD checks for the Mystery Guest smell by performing a text-based search for `File', `db' and
+                    `File('. In the sample code provided, there is a string variable that
+                    contains the characters 'db'; TSD wrongly identified this test file as containing the smell.
+                </p>
+                <pre><code class="java">
+@Test
+public void testParseRadicalName() {
+    String kanjidicStr = "巛 565F U5ddb B47 S3 V1527 H9 MN8669 MP4.0326 P1-1-2 I0a3.2 Q2233.7 Ychuan1 Wcheon セン かわ T2 まがりがわ {curving river radical (no.47)}";
+        KanjiEntry entry = KanjiEntry.parseKanjidic(kanjidicStr);
+    .....      
+}
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="w3-card w3-padded-box w3-margin-top">
+            <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
+                &nbsp;
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
+        <p class="w3-small">
+            Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                style="text-decoration: none;" target="_blank">RIT</a>
+        </p>
+    </footer>
+</body>
+
+</html>

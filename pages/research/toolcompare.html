@@ -85,7 +85,8 @@
             <p>
                 As part of our study, we also performed a comparative exercise of tsDetects ability of smell detection
                 against state-of-art detection strategies. We were successful in acquiring Test Smell Detector (TSD), a
-                tool used in a few recent test smell studies \cite{bavota2015test,palomba2017does}. Ideally, the
+                tool used in a few recent test smell studies <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                    class="w3-cite">[1][2]</span></a>. Ideally, the
                 comparison has to be performed with a dataset of manually detected test smells. Since there are no
                 publicly available test smell datasets, we decided to run both tools against a set of manually
                 validated smells, identified in the previous experiment. However, the comparison was limited to smell
@@ -212,6 +213,22 @@ public void testParseRadicalName() {
                 style="text-decoration: none;" target="_blank">RIT</a>
         </p>
     </footer>
+
+         <!-- Modal -->
+         <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-top">
+                <header class="w3-container w3-theme-l1">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright w3-large">X</span>
+                    <h4>References</h4>
+                </header>
+                <div class="w3-padding">
+                    <p>[1] Gabriele Bavota, Abdallah Qusef, Rocco Oliveto, Andrea De Lucia, and Dave Binkley. Aretestsmellsreallyharmful? anempiricalstudy. EmpiricalSoftwareEngineering, 20(4):1052–1094, 2015.
+                    </p>
+                    <p>[2] Fabio Palomba and Andy Zaidman. Does refactoring of test smells induce ﬁxing ﬂakytests? InProceedingsoftheInternationalConferenceonSoftwareMaintenance (ICSME). IEEE, 2017.
+                    </p>                  
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Unit Test Smells</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/w3.css">
+    <link rel="stylesheet" href="../../assets/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/java.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117089382-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117089382-1');
+    </script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+</head>
+
+<body id="pageBody">
+
+    <ul class="topnav w3-small">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../testsmells.html">Test Smell Types</a></li>
+        <li><a href="../testsmellexamples.html">Test Smell Examples</a></li>
+        <li><a href="../testsmelldetector.html">Test Smell Detector</a></li>
+        <li><a class="active" href="home.html">Test Smell Research</a></li>
+        <li class="right"><a href="../about.html">About</a></li>
+    </ul>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
+            <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Research</h1>
+            <h2 class="w3-xxlarge w3-animate-bottom"><i>Test Suite Characteristics</i></h2>
+        </div>
+    </header>
+
+    <div class="w3-center w3-padding-32">
+        <div class="w3-card w3-container w3-justify w3-padded-box">
+            <p>
+                To further understand the degree to which test smells can impact software maintenance activities of an
+                Android app, we studied the impact of each test smell type on specific characteristics of the apps test
+                suite. Our investigation followed a similar approach to <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                        class="w3-cite">[1]</span></a>.
+            </p>
+            <p>
+                First, for each smell type, we obtained the apps that exhibited the smell. Next, for each smelly app,
+                we obtained the total number of JUnit classes contained in the app. From these classes, we obtained the
+                total number of methods and lines of code (LOC). Additionally, we also obtained the count of co-located
+                smells exhibited by the class for each smell type. Finally, we computed the correlation between the
+                number of instances of the specific smell and the derived characteristics.To facilitate our
+                investigation, we defined the following Null Hypotheses:
+                <span>
+                    The existence of a specific test smell does not have an impact on an app's test suite
+                    characteristics.
+                </span>
+            </p>
+            <p>
+                The below table provides the result of computing the Spearman rank correlation
+                coefficient for each characteristic. Not surprisingly the majority of the smell types yielded positive
+                and statistically significant (i.e., p < 0.05) values. The Default Test smell is the only smell that exhibits a weak negative correlation.
+                    This is not surprising since this smell is associated with the sample unit test file included by
+                    Android Studio and does exercise code in production files. All other smells exhibit positive weak
+                    (0.3 <= rho < 0.5) to strong (0.5 <= rho < 1.0)
+                    correlations <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                        class="w3-cite">[2]</span></a> with test suite characteristics. Given these
+                    results the Null Hypothses can be rejected. As such, developers need to pay careful attention to the
+                    quality of the code that they write for unit tests, much in the same way they do for production
+                    tests, as a means to reduce the effort required to maintain the test code 
+                </p> 
+                <img src="assets/testsuitecharacteristics.png" />                
+        </div>
+
+        <div class="w3-card w3-padded-box w3-margin-top">
+            <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
+                &nbsp;
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
+        <p class="w3-small">
+            Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                style="text-decoration: none;" target="_blank">RIT</a>
+        </p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-top">
+            <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright w3-large">X</span>
+                <h4>References</h4>
+            </header>
+            <div class="w3-padding">
+                <p>[1]  Fabio Palomba, Gabriele Bavota, Massimiliano Di Penta, Fausto Fasano, Rocco Oliveto, and Andrea De Lucia. On the diffuseness and the impact on maintainability ofcodesmells: alargescaleempiricalinvestigation. EmpiricalSoftwareEngineering, Aug 2017.
+
+                </p>
+                <p>[2] Margaret Lewis. Applied statistics for economists. Routledge, 2012.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

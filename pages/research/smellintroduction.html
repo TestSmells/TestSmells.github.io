@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Unit Test Smells</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/w3.css">
+    <link rel="stylesheet" href="../../assets/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/java.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117089382-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117089382-1');
+    </script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+</head>
+
+<body id="pageBody">
+
+    <ul class="topnav w3-small">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../testsmells.html">Test Smell Types</a></li>
+        <li><a href="../testsmellexamples.html">Test Smell Examples</a></li>
+        <li><a href="../testsmelldetector.html">Test Smell Detector</a></li>
+        <li><a class="active" href="home.html">Test Smell Research</a></li>
+        <li class="right"><a href="../about.html">About</a></li>
+    </ul>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
+            <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Research</h1>
+            <h2 class="w3-xxlarge w3-animate-bottom"><i>Test Smell Introduction</i></h2>
+        </div>
+    </header>
+
+    <div class="w3-center w3-padding-32">
+        <div class="w3-card w3-container w3-justify w3-padded-box">
+            <p>
+                Our study on the introduction of test smells into a project involved the analysis of commits to
+                identify when the first commit of a smelly test file occurs and the number of smells introduced when a
+                unit test file is added to the project.
+
+                For each app in our study, we identified the very first instance of a smelly unit test file and then
+                identified when this file was introduced (i.e., committed) into the apps' project repository. Given the
+                vast diversity of the analyzed apps, we considered the introduction point, of a smelly test file, as
+                the ratio of the absolute commit position to the total commits of the app:
+            </p>
+            <p>
+                First Smelly Commit Position = First Smelly Commit Absolute Position / Total App Commits
+            </p>
+            <p>
+                As shown in the below table, the introduction of a smelly test file occurs earlier
+                on in the project; approximately at the 23% of the apps commits. For each identified first commit of a
+                unit test file, we identified the number of test smells (if any) that were exhibited by these files. As
+                shown in the below table, on average, a unit test file is added to a project with
+                3 test smells.
+            </p>
+            <p>
+                To understand the types of smells that occur in a unit test file when the file first starts to exhibit
+                test smells, we analyzed the first smelly version of each unit test file. Our analysis showed that when
+                a test file becomes smelly, on average, three types of smells are added to the test file. Further
+                analysis showed that Assertion Roulette is the
+                frequently occurring smell, followed by the Exception Handling smell; both smells occurring in
+                over 50% of the identified smelly files. Below table lists down the frequency
+                distribution of each smell type occurring in the first smelly commit of the set of unit test files.
+            </p>
+            <p>
+                The frequency distribution table, provide further information on
+                the introduction of test smells. The table provides the top 5 commit positions of a smelly file and the
+                top 5 smell types that initially occur in a unit test file. It was observed that the majority
+                (approximately 82%) of the unit test files had 1 or more test smell types when the unit test file was
+                added to the project repository.
+            </p>
+
+            <img src="assets/testsmellintroduction01.PNG" />
+            <img src="assets/testsmellintroduction02.PNG" />
+            <img src="assets/testsmellintroduction03.PNG" />
+        </div>
+
+        <div class="w3-card w3-padded-box w3-margin-top">
+            <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
+                &nbsp;
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
+        <p class="w3-small">
+            Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                style="text-decoration: none;" target="_blank">RIT</a>
+        </p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-top">
+            <header class="w3-container w3-theme-l1">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright w3-large">X</span>
+                <h4>References</h4>
+            </header>
+            <div class="w3-padding">
+                <p>[1] Fabio Palomba, Gabriele Bavota, Massimiliano Di Penta, Fausto Fasano, Rocco Oliveto, and Andrea
+                    De Lucia. On the diffuseness and the impact on maintainability ofcodesmells:
+                    alargescaleempiricalinvestigation. EmpiricalSoftwareEngineering, Aug 2017.
+
+                </p>
+                <p>[2] Margaret Lewis. Applied statistics for economists. Routledge, 2012.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Unit Test Smells</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../assets/w3.css">
+    <link rel="stylesheet" href="../../assets/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/java.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117089382-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117089382-1');
+    </script>
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function () {
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
+
+</head>
+
+<body id="pageBody">
+
+    <ul class="topnav w3-small">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../testsmells.html">Test Smell Types</a></li>
+        <li><a href="../testsmellexamples.html">Test Smell Examples</a></li>
+        <li><a href="../testsmelldetector.html">Test Smell Detector</a></li>
+        <li><a class="active" href="home.html">Test Smell Research</a></li>
+        <li class="right"><a href="../about.html">About</a></li>
+    </ul>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
+            <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Research</h1>
+            <h2 class="w3-xxlarge w3-animate-bottom"><i>Test Smells & Technical Debt</i></h2>
+        </div>
+    </header>
+
+    <div class="w3-center w3-padding-32">
+        <div class="w3-card w3-container w3-justify w3-padded-box">
+            <p>
+                As a reminder, technical debt is the implementation of less than optimal solutions to deliver a
+                software product within a less than required timeline or budget. Since there is no consensus on how to
+                measure technical debt, we have decided to extract technical debt instances where developers
+                intentionally admit the existence of a shortage in their implementation, also known as Self-Admitted
+                Technical Debt (SATD). In this exploratory study, we investigate the presence of SATD in unit test
+                files and the degree to which it acts as an indicator of smells in test files. SATD occurs when
+                developers knowingly inject bad programming practices into the codebase to meet a specific requirement
+                <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                    class="w3-cite">[1]</span></a>. In this context, we utilized JavaParser to perform an automated (case insensitive
+                regular expression) search of unit test files for the presence of SATD keywords within the files'
+                comments. Our search process utilized the set of SATD keywords defined by <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                    class="w3-cite">[2]</span></a>.
+            </p>
+            <p>
+                Results from our analysis indicated that approximately 10.26% of unit test files contained one or more
+                SATD keywords. These files were distributed across 25% of the analyzed apps. Interestingly, when we
+                analyzed the SATD-based files for test smells, 96% of the files exhibited test smells. From this, we
+                observed that the smell Assertion Roulette occurred the most. The high occurrence of this smell
+                is not surprising since it is one of the most frequently occurring test smell in all test files.
+                The table below provides a complete breakdown on the smell type distribution.
+                We also observed that the SATD keyword `todo' occurred the most; The below tabe lists
+                the breakdown on SATD keyword occurrence. Examples of test cases exhibiting SATD are provided below.
+
+                <pre><code class="java">
+//Test method exhibiting an Unknown Test smell
+@Test public void testSetLocale() {
+    setUpTypical();
+    subject.setLocale(LOCALES[0].getLanguage());
+    // todo: how to verify?
+}
+                </code></pre>
+
+                <pre><code class="java">
+//Test method exhibiting a Sleepy Test smell
+// FIXME This test doesn't really work as expected
+public void testGetLastKnownLocation() throws InterruptedException {
+    .....
+    // TODO See if that solves sporadic test failures.
+    Thread.sleep(500)
+    .....
+}
+                </code></pre>
+
+                <pre><code class="java">
+//Test method exhibiting an Assertion Roulette smell
+public void testLooksLikeURL() {
+    .....
+    assertFalse(StringUtils.lastPartLooksLikeURL("abc.def"));
+    // TODO: ideally this would not look like a URL, but to keep
+    // down the complexity of the code for now True is acceptable.
+    assertTrue(StringUtils.lastPartLooksLikeURL("abc./def"));
+    // TODO: ideally this would not look like a URL, but to keep
+    // down the complexity of the code for now True is acceptable.
+    assertTrue(StringUtils.lastPartLooksLikeURL(".abc/def"));
+}
+                </code></pre>
+                <pre><code class="java">
+//Test method exhibiting an Empty Test smell
+public void testInvalidMoves() {
+// TODO
+// fail("TODO");
+}
+                </code></pre>
+            </p>
+            <img src="assets/technicaldebt01.png"/>
+            <img src="assets/technicaldebt02.png"/>
+            <p>
+
+            </p>
+            <p>
+                Our investigation into SATD also resulted in a brief analysis of refactoring on unit test files. We
+                observed that approximately 3% of all unit test file commits were related to refactoring. We arrived
+                at this conclusion by performing a search on the commit message for the keywords including `refactor',
+                `refactoring' and `refactored'. While we agree that such an approach is not entirely reliable, it does
+                provide a starting point for future investigations. Future studies in this area can include following a
+                similar approach to <a href='#' onclick="document.getElementById('id01').style.display='block'"><span
+                    class="w3-cite">[3]</span></a>.
+            </p>
+            <p>
+                Our findings indicate that unit test code, similar to production code is also subject to technical
+                debt. Furthermore, the presence of test smells acts as a reliable indicator of technical debt in the
+                test suite. However, further research in this area is needed to understand the precise impact test
+                smells on technical debt. We recommend developers take into consideration these initial findings during
+                development.
+            </p>
+        </div>
+
+        <div class="w3-card w3-padded-box w3-margin-top">
+            <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
+                &nbsp;
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
+        <p class="w3-small">
+            Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                style="text-decoration: none;" target="_blank">RIT</a>
+        </p>
+    </footer>
+
+     <!-- Modal -->
+     <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-top">
+                <header class="w3-container w3-theme-l1">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright w3-large">X</span>
+                    <h4>References</h4>
+                </header>
+                <div class="w3-padding">
+                    <p>[1] Qiao Huang, Emad Shihab, Xin Xia, David Lo, and Shanping Li. Identifying selfadmittedtechnicaldebtinopensourceprojectsusingtextmining. EmpiricalSoftware Engineering, 23(1):418–451, Feb 2018.
+                    </p>
+                    <p>[2]  E. d. S. Maldonado, E. Shihab, and N. Tsantalis. Using natural language processing to automatically detect self-admitted technical debt. IEEE Transactions on Software Engineering, 43(11):1044–1062, Nov 2017.
+                    </p>
+                    <p>[3] E. Murphy-Hill, C. Parnin, and A. P. Black. How we refactor, and how we know it. IEEE Transactions on Software Engineering, 38(1):5–18, Jan 2012.                        
+                    </p>                    
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

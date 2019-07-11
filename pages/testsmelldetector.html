@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Software Unit Test Smells</title>
     <meta charset="UTF-8">
@@ -23,128 +24,151 @@
     </script>
 
 </head>
+
 <body>
 
-<ul class="topnav w3-small">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="testsmells.html">Test Smell Types</a></li>
-    <li><a href="testsmellexamples.html">Test Smell Examples</a></li>
-    <li><a class="active" href="testsmelldetector.html">Test Smell Detector</a></li>
-    <li><a href="../pages/research/home.html">Test Smell Research</a></li>
-    <li><a href="about.html">About</a></li>
-</ul>
+    <ul class="topnav w3-small">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="testsmells.html">Test Smell Types</a></li>
+        <li><a href="testsmellexamples.html">Test Smell Examples</a></li>
+        <li><a class="active" href="testsmelldetector.html">Test Smell Detector</a></li>
+        <li><a href="../pages/research/home.html">Test Smell Research</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
 
-<!-- Header -->
-<header class="w3-container w3-theme w3-padding" id="myHeader">
-    <div class="w3-center">
-        <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
-        <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Detector</h1>
-    </div>
-</header>
-<div class="w3-center w3-padding-32">
-    <div class="w3-card w3-container w3-justify w3-padded-box">
-        <a href="https://github.com/TestSmells/TestSmellDetector"><img
-                style="position: absolute; top: 0; right: 0; border: 0;"
-                src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-                alt="Fork me on GitHub"></a>
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <div class="w3-center">
+            <!--<a href='../index.html' class='w3-bar-item w3-button w3-hover-theme'><h4>Software Unit Test Smells</h4></a>-->
+            <h1 class="w3-xxxlarge w3-animate-bottom">Test Smell Detector</h1>
+        </div>
+    </header>
+    <div class="w3-center w3-padding-32">
+        <div class="w3-card w3-container w3-justify w3-padded-box">
+            <a href="https://github.com/TestSmells/TestSmellDetector"><img
+                    style="position: absolute; top: 0; right: 0; border: 0;"
+                    src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+                    alt="Fork me on GitHub"></a>
 
-<!--
+            <!--
         <p>
             Due to the requirements of the bind review process, we are not providing the location of tools repository. 
         </p>
         <p>
             Please use this alternate link to download the tool: <a target='_blank' href='https://drive.google.com/uc?id=1If_XYg3O1dp69zIkOFBWShWNqU0L1ez0&export=download'>https://drive.google.com/uc?id=1If_XYg3O1dp69zIkOFBWShWNqU0L1ez0&export=download</a>
         </p>
--->        
-        <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
-            <iframe src="https://ghbtns.com/github-btn.html?user=TestSmells&type=follow&count=true&size=large"
+-->
+            <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
+                <iframe src="https://ghbtns.com/github-btn.html?user=TestSmells&type=follow&count=true&size=large"
                     frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
-        </div>
-        <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
-            <iframe src="https://ghbtns.com/github-btn.html?user=TestSmells&repo=TestSmellDetector&type=watch&count=true&size=large&v=2"
+            </div>
+            <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
+                <iframe
+                    src="https://ghbtns.com/github-btn.html?user=TestSmells&repo=TestSmellDetector&type=watch&count=true&size=large&v=2"
                     frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-        </div>
-        <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
-            <iframe src="https://ghbtns.com/github-btn.html?user=TestSmells&repo=TestSmellDetector&type=fork&count=true&size=large"
+            </div>
+            <div class="w3-container w3-third w3-margin-top w3-margin-bottom w3-center">
+                <iframe
+                    src="https://ghbtns.com/github-btn.html?user=TestSmells&repo=TestSmellDetector&type=fork&count=true&size=large"
                     frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
-        </div>
-        <div class="w3-container">
-            <h4 class="w3-center w3-margin-top" style="text-decoration: underline">Tool Usage</h4>
-            <h5 style="text-decoration: underline">Download</h5>
-            <p>
-                Download the latest release from <a href="https://github.com/TestSmells/TestSmellDetector/releases" target="_blank">here</a>.
-            </p>
-            <h5 style="text-decoration: underline">Input</h5>
-            <p>
-                Prior to executing the tool, an CSV file needs to be created. The CSV file specifies the list of test
-                files (and their associated production file). This file will be used as input to the tool. The format of
-                the file should be:
-            <pre>
+            </div>
+            <div class="w3-container">
+                <h4 class="w3-center w3-margin-top" style="text-decoration: underline">Tool Usage</h4>
+                <h5 style="text-decoration: underline">Download</h5>
+                <p style="padding-left: 20px">
+                    Download the latest release from <a href="https://github.com/TestSmells/TestSmellDetector/releases"
+                        target="_blank">here</a>.
+                </p>
+                <h5 style="text-decoration: underline">Input</h5>
+                <p style="padding-left: 20px">
+                    Prior to executing the tool, an CSV file needs to be created. The CSV file specifies the list of
+                    test
+                    files (and their associated production file). This file will be used as input to the tool. The
+                    format of
+                    the file should be:
+                    <pre>
                     appName,pathToTestFile,pathToProductionFile
                 </pre>
-            Example:
-            <pre>
+                    <p style="padding-left: 20px">Example:</p>
+                    <pre>
                     myCoolApp,F:\Apps\myCoolApp\code\test\GraphTest.java,F:\Apps\myCoolApp\code\src\Graph.java
                     myCoolApp,F:\Apps\myCoolApp\code\test\EmployeeTest.java,F:\Apps\myCoolApp\code\src\Employee.java
                     myCoolApp,F:\Apps\myCoolApp\code\test\EmployeeRelationship.java
                 </pre>
-            <span class="w3-medium w3-serif" style="font-style:italic">Note: In the event a production file is not associated with a test file, then detection for test smells that require production files are not run.</span>
-            </p>
-            <h5 style="text-decoration: underline">Execution</h5>
-            <p>
-                Once the CSV file has been created, the path to the CSV file need to be passed as an argument when
-                executing the jar.
-            <pre>
+                    <span class="w3-medium w3-serif" style="font-style:italic;padding-left: 20px">Note: In the event a
+                        production file is not associated with a test file, then detection for test smells that require
+                        production files are not run.</span>
+                </p>
+                <h5 style="text-decoration: underline">Execution</h5>
+                <p style="padding-left: 20px">
+                    Once the CSV file has been created, the path to the CSV file need to be passed as an argument when
+                    executing the jar.
+                    <pre>
                     java -jar .\TestSmellDetector.jar pathToInputFile.csv
                 </pre>
-            Example:
-            <pre>
+                    <p style="padding-left: 20px">Example:</p>
+                    <pre>
                     java -jar .\TestSmellDetector.jar "F:\Projects\TestSmellDetector\inputFile.csv"
                 </pre>
-            </p>
-            <h5 style="text-decoration: underline">Output</h5>
-            <p>
-                The tool outputs a CSV file containing the results of the execution. The output CSV file will be created
-                in the same location as the jar. The CSV file contains the path of the test files (and their associated
-                production file) along with the detection status for each smell. A detection of status of 'true'
-                indicates that the associated smell exists in the test file.
-            </p>
-            <h5 style="text-decoration: underline">Tool Correctness</h5>
-            <p>
-                tsDetect is able to correctly detect test smells with a precision score ranging from 85% to 100% and a 
-                recall score from 90% to 100% with an average F-score of 96.5%. 
-                <span class=" w3-small w3-left-align"><a href="research/toolcorrectness.html">Click to read more</a></span>
-            </p>
-            <h5 style="text-decoration: underline">Misc.</h5>
-            <p>
-                UML class diagrams of the tool are available <a href='assets/tsDetect_class_diagram.png' target='_blank'>here</a>, <a href='assets/tsDetect_class_diagram_01.png' target='_blank'>here</a> and <a href='assets/tsDetect_class_diagram_02.png' target='_blank'>here</a>
-            </p>
-            <p>
+                </p>
+                <h5 style="text-decoration: underline">Output</h5>
+                <p style="padding-left: 20px">
+                    The tool outputs a CSV file containing the results of the execution. The output CSV file will be
+                    created
+                    in the same location as the jar. The CSV file contains the path of the test files (and their
+                    associated
+                    production file) along with the detection status for each smell. A detection of status of 'true'
+                    indicates that the associated smell exists in the test file.
+                </p>
+                <h5 style="text-decoration: underline">Tool Correctness</h5>
+                <p style="padding-left: 20px">
+                    tsDetect is able to correctly detect test smells with a precision score ranging from 85% to 100% and
+                    a
+                    recall score from 90% to 100% with an average F-score of 96.5%.
+                    <span class=" w3-small w3-left-align"><a href="research/toolcorrectness.html">Click to read
+                            more</a></span>
+                </p>
+                <h5 style="text-decoration: underline">Architecture &amp; Design </h5>
+                <p style="padding-left: 20px">
+                    Details about the architecture of tsDetect along with information about test file and production
+                    file identification are available <a href="testsmelldetector-architecture.html">here</a>.
+                </p>
+                <p style="padding-left: 20px">
+                    UML class diagrams of the tool are available <a href='assets/tsDetect_class_diagram.png'
+                        target='_blank'>here</a>, <a href='assets/tsDetect_class_diagram_01.png'
+                        target='_blank'>here</a> and <a href='assets/tsDetect_class_diagram_02.png'
+                        target='_blank'>here</a>
+                </p>
                 <h5 style="text-decoration: underline">Demo</h5>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/kzRSadHo5YA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </p>
-            <p>
+                <p style="padding-left: 20px">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kzRSadHo5YA?rel=0"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </p>
                 <h5 style="text-decoration: underline">Supplementary Tools</h5>
-                     <a href="https://github.com/TestSmells/TestFileDetector/releases" target="_blank"> Detect unit test files in the project structure </a>
-                     <br>
-                     <a href="https://github.com/TestSmells/TestFileMapping/releases" target="_blank"> Detect production files associated with a unit test file </a>
-            </p>
+                <p style="padding-left: 20px">
+                    <a href="https://github.com/TestSmells/TestFileDetector/releases" target="_blank"> Detect unit test
+                        files in the project structure </a>
+                    <br>
+                    <a href="https://github.com/TestSmells/TestFileMapping/releases" target="_blank"> Detect production
+                        files associated with a unit test file </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="w3-card w3-padded-box w3-margin-top">
+            <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
+                &nbsp;
+            </div>
         </div>
     </div>
 
-    <div class="w3-card w3-padded-box w3-margin-top">
-        <div class="w3-container w3-half w3-margin-top w3-margin-bottom">
-            &nbsp;
-        </div>
-    </div>
-</div>
-
-<footer class="w3-container w3-teal w3-footer w3-animate-opacity">
-    <p class="w3-small">
-        Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
-                                                                                   style="text-decoration: none;"
-                                                                                   target="_blank">RIT</a>
-    </p>
-</footer>
+    <footer class="w3-container w3-teal w3-footer w3-animate-opacity">
+        <p class="w3-small">
+            Made with <i class="fa fa-heart w3-animate-fading2  w3-fa-spin"></i> at <a href="http://www.se.rit.edu/"
+                style="text-decoration: none;" target="_blank">RIT</a>
+        </p>
+    </footer>
 </body>
+
 </html>
